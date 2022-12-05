@@ -1,0 +1,16 @@
+---
+export interface Props {
+    logo: string;
+}
+const { logo } = Astro.props
+---
+
+<img class="logo" src={`/logos/${logo}.svg`} alt="logos"/>
+
+<style>
+    .logo {
+        opacity: .5;
+        width: 5rem;
+        height: 5rem;
+    }
+</style>

@@ -1,0 +1,96 @@
+---
+import Footer from '../components/Footer.astro';
+import NavHeader from '../components/NavHeader.astro';
+export type PageType = "home" | "about" | "contact" | "projects" | "404"
+
+export interface Props {
+	title: string;
+	hasOverflow?: boolean;
+	page: PageType;
+}
+
+const { title, hasOverflow = true, page } = Astro.props;
+
+const overflowType = !hasOverflow 
+		? "overflow-hidden h-screen" 
+		: "overflow h-full";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/assets/logo.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{`${title} 🦩 Tomychi` }</title>
+	</head>
+	<script
+		src="https://kit.fontawesome.com/dab29081a1.js"
+		crossorigin="anonymous"
+	></script>
+	<body
+		class={`${overflowType} bg-gradient-to-br from-stone-900 via-gray-900 to-gray-900 h-screen flex flex-col items-center justify-between`}
+	>
+	<NavHeader page={page} />
+		<main
+			class="relative place-content-center flex flex-col min-h-[20vh] justify-center items-center"
+		>
+			<slot />
+		</main>
+		<Footer />
+
+	<style is:global>
+		@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Raleway:wght@400;500;900&family=Roboto:ital,wght@0,400;0,500;0,900;1,300&display=swap");
+		:root {
+			--hot-red: #b30086;
+		}
+		h1 {
+			font-size: var(--font-size-xl);
+		}
+		h2 {
+			font-size: var(--font-size-lg);
+		}
+		code {
+			font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+				DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New,
+				monospace;
+		}
+			/* width */
+		::-webkit-scrollbar {
+			width: 10px;
+			border-radius: 100px;
+			background: transparent;
+		}
+			/* Track */
+		::-webkit-scrollbar-track {
+			background: transparent;
+			border-radius: 100px;
+		}
+			/* Handle */
+		body ::-webkit-scrollbar-thumb {
+			background-color: #516280;
+			border-radius: 100px;
+		}
+			/* Handle on hover */
+		::-webkit-scrollbar-thumb:hover {
+			border-radius: 100px;
+		}
+	</style>
+	<style>
+		:root {
+			--font-size-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
+			--font-size-lg: clamp(1.2rem, 0.7vw + 1.2rem, 1.5rem);
+			--font-size-xl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
+			--color-text: hsl(0, 0%, 100%);
+			--color-bg: hsl(0, 0%, 10%);
+			--color-border: hsl(17, 24%, 90%);
+		}
+		html {
+			font-family: "Roboto", sans-serif;
+			font-size: var(--font-size-base);
+			color: var(--color-text);
+		}
+	</style>
+	</body>
+</html>

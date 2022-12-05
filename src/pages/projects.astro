@@ -1,0 +1,128 @@
+---
+import Layout, { PageType } from "../layouts/Layout.astro";
+
+const hasOverflow = true;
+const page: PageType = "projects";
+---
+
+
+
+<Layout hasOverflow={hasOverflow} page={page} title="Projects">
+    <div>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h1 class="shadow-underline block uppercase font-raleway font-bold">My Projects</h1>
+    </div>
+        <!-- Card Grid -->
+        <div
+            class="grid grid-flow-row gap-4 text-neutral-600 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 xl:gap-12 xl:px-6 xl:py-6 xl:mx-auto xl:max-w-7xl xl:px-8 z-10 xl:z-0"
+            id="card-grid">
+        </div>
+    </div>
+
+    <script>
+        const cardContainer = document.getElementById("card-grid") as HTMLElement;
+        let template = "";
+        const projects = [
+            {
+                deploy: "https://donde-suena.vercel.app/",
+                description: "Se desarrolló una aplicación web que permite a los usuarios buscar y compartir eventos musicales en cualquier parte del mundo.",
+                github: "https://github.com/tomychi/DondeSuena-backend",
+                img: "/assets/dondesuena.png",
+                tags: ["React", "PostgreSQL", "TailwindCSS", "Redux", "Mercado pago", "Express", "Sequelize","Google Maps API"],
+                title: "Dondesuena",
+            },
+            {
+                deploy: "https://google.com",
+                description: "Se desarrolló una aplicación web que permite a los usuarios agendar notas, tareas y eventos que se mostrarán en un calendario.",
+                github: "https://github.com/tomychi/calendar-back",
+                img: "/assets/calendar-app.png",
+                tags: ["React", "Express", "CSS", "Mongoose", "MongoDB"],
+                title: "Calendar App",
+            },
+            {
+                deploy: "https://google.com",
+                description: "Se desarrolló una aplicación web que permite a los usuarios crear notas y tareas que se mostrarán en un tablero.",
+                github: "https://github.com/tomychi/journal-app",
+                img: "/assets/journal-app.png",
+                tags: ["React", "Redux","Saas", "Firebase",],
+                title: "Journal App",
+            },
+            {
+                deploy: "https://google.com",
+                description: "Se desarrolló una aplicación web que permite a los usuarios buscar y encontrar la mejor ruta para llegar a un lugar de interés.",
+                github: "https://github.com/tomychi/map-app",
+                img: "/assets/map-app.png",
+                tags: ["Map Box", "React", "Typescript"],
+                title: "Map App",
+            },
+            {
+                deploy: "https://google.com",
+                description: "Se desarrolló una aplicación web que permite a los usuarios buscar, ordenar, filtrar y crear sus propios videojuegos. Ademas de obtener información sobre los mismos.",
+                github: "https://github.com/tomychi/videogames",
+                img: "/assets/videogame-app.png",
+                tags: ["React", "Redux", "CSS", "Express", "PostgreSQL", "Sequelize", "API", "Axios"],
+                title: "Videogames App",
+            },
+        ];  
+
+        projects.forEach((p) => {
+            template += `
+        <div class="max-w-sm border border-gray-200 relative rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 mx-5 bg-gradient-to-br from-gray-100 to-gray-200 hover:from-gray-200 hover:to-gray-300">
+                <div class="xl:hover:scale-[1.45] xl:hover:transition-all xl:hover:duration-500 xl:hover:z-[100]">
+                <a href="${p.deploy}" target="_blank" rel="noopener noreferrer">
+                    <img  src=${p.img} alt=${p.title} class="rounded-t-lg w-full object-content" /> 
+                </a>
+                </div>
+            <div class="p-5 flex flex-col justify-center ">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">${p.title}
+                </h5>
+                    <div>
+                        ${p.tags.map((tag) => `<span 
+                            class='cursor-pointer inline-block text-white rounded-full px-3 py-1 text-xs font-semibold mr-2 bg-fuchsia-500 hover:bg-fuchsia-600 mb-2'>
+                            ${tag}
+                            </span>`).join("")}		
+                    </div>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">${p.description}</p>
+
+                    <div class="flex items-center justify-between absolute bottom-0 left-0 w-full">
+                        <a 
+                            href=${p.github} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            class="flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white bg-gray-900 rounded-md hover:bg-gray-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+                        >
+                            <i class="fab fa-github"></i>
+                        </a>    
+                    </div>
+            </div>
+        </div>
+
+            `;
+            cardContainer.innerHTML = template;
+                
+
+        });
+
+
+    </script>
+    
+    <style>
+    
+
+    .shadow-underline {
+		color: #fff;
+		animation: .3s 1s text-shadow-reveal forwards;
+	}
+
+    @keyframes text-shadow-reveal {
+        from {
+            text-shadow: 0 0 0 var(--hot-red);
+        }
+        to {
+            text-shadow: 4px 4px 0 var(--hot-red);
+        }
+    }
+	</style>
+
+
+</Layout>

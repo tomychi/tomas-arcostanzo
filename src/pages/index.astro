@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Logo from '../components/Logo.astro';
+import LandingHeader from '../components/LandingHeader.astro';
+
+const hasOverflow = false;
+
+const logos = [
+	"css",
+	"html",
+	"javascript",
+	"mongodb",
+	"astro",
+	"node",
+	"postgresql",
+	"react",
+	"tailwind",
+	"typescript",
+	
+]
+---
+
+<Layout hasOverflow={hasOverflow} page="home" title="Home">
+	<LandingHeader />
+	<div id="logo-container" class="bottom-0 fixed hidden z-0">
+		{logos.map((logo) => <Logo logo={logo} />)}
+	</div>
+	<script>
+		import anime from "animejs";
+		const innerWidth = window.innerWidth / 2;
+		const logoContainerEl = document.getElementById("logo-container");
+		window.addEventListener("load", () => {
+			if (logoContainerEl) {
+				logoContainerEl.classList.remove("hidden");
+				logoContainerEl.classList.add("flex");
+			}
+			reset();
+			animation();
+		});
+		function animation() {
+			const tl: any = anime.timeline({
+				targets: ".logo",
+				delay: anime.stagger(1000),
+				loop: true,
+				duration: 10000,
+				easing: "easeInOutQuad",
+			});
+			tl.add({
+				translateX: function () {
+					return anime.random(-innerWidth / 3, innerWidth / 3);
+				},
+				translateY: `-${window.innerHeight}`,
+				scale: function () {
+					return anime.random(0.5, 1);
+				},
+			})
+				.add(
+					{
+						targets: ".logo",
+						opacity: .3,
+						duration: 1000,
+					},
+					5000
+				)
+				.add(
+					{
+						targets: ".logo",
+						opacity: 0,
+						duration: 1000,
+					},
+					6000
+				);
+		}
+		function reset() {
+			anime.set(".logo", {
+				translateX: function () {
+					return anime.random(-innerWidth, innerWidth);
+				},
+				translateY: "100px",
+				opacity: 1,
+			});
+		}
+	</script>
+</Layout>

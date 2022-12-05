@@ -1,0 +1,43 @@
+---
+import type { PageType } from "../layouts/Layout.astro";
+export interface Props {
+    page: PageType;
+}
+
+const {page} = Astro.props;
+---
+
+<header class="w-11/12  py-5 px-16 z-10 flex justify-between flex-wrap">
+    <div class="flex items-center flex-shrink-0 w-40">
+        <a href="/" class="flex font-fira font-bold items-center w-14">
+            <img alt="" src="/assets/logo.svg"/>
+            <span class="ml-2 text-2xl mt-10 flex-warp flex font-fira font-bold items-center w-18 ownUnderline">Tomychi</span>
+        </a>
+    </div>
+
+    <nav class="flex items-center mt-10 ">
+        <ul class="flex items-center text-white text-2xl leading-[0] gap-4 font-bold">
+            <li class={`${page === 'contact'? 'ownUnderline': ''}`}>
+                <a href="contact" class="text-xs uppercase">Contact</a>
+            </li>
+            <li class={`${page === 'projects'? 'ownUnderline': ''}`}>
+                <a href="projects" class="text-xs uppercase">projects</a>
+            </li>
+            <li class={`${page === 'about'? 'ownUnderline': ''}`}>
+                <a href="about" class="text-xs uppercase">about</a>
+            </li>
+            
+        </ul>
+    </nav>
+
+    <style>
+        .ownUnderline{
+            border-bottom: 2px solid var(--hot-red);
+        }
+
+        a:hover{
+            color: var(--hot-red);
+        }
+    </style>
+
+</header>

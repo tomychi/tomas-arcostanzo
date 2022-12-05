@@ -1,0 +1,69 @@
+---
+import Layout, { PageType } from "../layouts/Layout.astro";
+const hasOverflow = false;
+const page: PageType = "about";
+---
+
+<Layout hasOverflow={hasOverflow} page={page} title="About">
+	<div class="flex items-center justify-center p-12 overflow-hidden">
+        <div class="mx-auto w-full max-w-[550px]">
+			<h1 class="shadow-underline block uppercase font-raleway font-bold">About Me</h1>
+			<div class="mt-10">
+				<p>Hey there! My name is <b>Tomas</b>.</p> <br>
+				<p>
+					I'm currently studying the second year of the career analyst of system in the university of rio cuarto and I finished the bootcamp of Full Stack that offers Henry.
+					<br />
+					I'm also a <b>web developer</b>, and I like <b>open source</b>.
+					<br />
+					I have some <b>projects</b> made by me and also in team with <b>other developers</b> made with different <b>technologies</b>.
+
+				</p><br>
+				<p>
+					Currently I'm learning <b>Next.js</b> and <b>Astro</b> and I'm interested in the world of <b>blockchain</b>.
+				</p><br>
+				<p>
+					Feel free to checkout my blog as well as my other social
+					platforms!
+				</p>
+			</div>
+			<div class="flex items-center justify-center mt-10">
+				<a 
+					class="flex items-center justify-center  text-white font-raleway font-bold px-3 py-2 rounded-lg color-a" 
+					href="/public/assets/Tomas-Arcostanzo.pdf"
+					download="Tomas-Arcostanzo.pdf"
+				>
+					<svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+					</svg>
+					<span>Download my CV</span>
+				</a>
+			</div>
+		</div>
+
+
+
+
+
+	</div>
+
+	<style>
+	.shadow-underline {
+		color: #fff;
+		animation: .3s 1s text-shadow-reveal forwards;
+	}
+
+	.color-a {
+		background-color: var(--hot-red);
+	}
+
+    @keyframes text-shadow-reveal {
+        from {
+            text-shadow: 0 0 0 var(--hot-red);
+        }
+        to {
+            text-shadow: 4px 4px 0 var(--hot-red);
+        }
+    }
+	</style>
+
+</Layout>
