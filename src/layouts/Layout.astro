@@ -1,8 +1,10 @@
 ---
 import Footer from '../components/Footer.astro';
 import NavHeader from '../components/NavHeader.astro';
-export type PageType = "home" | "about" | "contact" | "projects" | "404"
+// @ts-ignore
+import { SEO } from "astro-seo";
 
+export type PageType = "home" | "about" | "contact" | "projects" | "404"
 export interface Props {
 	title: string;
 	hasOverflow?: boolean;
@@ -19,6 +21,36 @@ const overflowType = !hasOverflow
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<SEO
+			title={title}
+			description="Tomas Arcostanzo's personal website"
+			noindex={false}
+			nofollow={false}
+			canonical="https://tomychi.github.io/tomas-arcostanzo/"
+			openGraph={{
+				type: "website",
+				locale: "en_US",
+				url: "https://tomychi.github.io/tomas-arcostanzo/",
+				title: "Tomas Arcostanzo",
+				description: "Tomas Arcostanzo's personal website",
+				site_name: "Tomas Arcostanzo",
+				images: [
+					{
+						url: "https://tomychi.github.io/tomas-arcostanzo/assets/logo.svg",
+						alt: "Tomas Arcostanzo's logo",
+						width: 512,
+						height: 512,
+					},
+				],
+			}}
+			twitter={{
+				handle: "@tomychi1",
+				site: "@tomychi1",
+				cardType: "summary_large_image",
+			}}
+		/>
+
+
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/tomas-arcostanzo/assets/logo.svg" />
