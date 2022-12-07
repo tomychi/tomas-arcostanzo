@@ -25,31 +25,45 @@ const overflowType = !hasOverflow
 			title={title}
 			description="Tomas Arcostanzo's personal website"
 			noindex={false}
-			nofollow={false}
 			canonical="https://tomychi.github.io/tomas-arcostanzo/"
-			openGraph={
-			{
-				title: "Tomas Arcostanzo",
+			nofollow={false}
+			og={{
+				title: title + " 🦩 Tomychi",
 				type: "website",
-				image: "https://tomychi.github.io/tomas-arcostanzo/assets/logo.svg",
-				locale: "en_US",
 				url: "https://tomychi.github.io/tomas-arcostanzo/",
-				description: "Tomas Arcostanzo's personal website",
-				site_name: "Tomas Arcostanzo",
-				images: [
-					{
-						url: "https://tomychi.github.io/tomas-arcostanzo/assets/logo.svg",
-						alt: "Tomas Arcostanzo's logo",
-						width: 512,
-						height: 512,
-					},
-				],
+				image: "https://tomychi.github.io/tomas-arcostanzo/assets/logo.svg",
+				site_name: "Tomas Arcostanzos",
+				locale: "en_US",
 			}}
+
+
 			twitter={{
 				handle: "@tomychi1",
 				site: "@tomychi1",
 				cardType: "summary_large_image",
+			}} 
+
+			article={{
+				publishedTime: "2022-12-05",
+				modifiedTime: "2022-12-07",
+				author: "Tomas Arcostanzo",
 			}}
+
+			jsonld={{
+				"@context": "https://schema.org",
+				"@type": "WebSite",
+				url: "https://tomychi.github.io/tomas-arcostanzo/",
+				name: "Tomas Arcostanzo",
+				alternateName: "Tomychi",
+			}}
+
+			extend={{
+				"og:image:width": "1200",
+				"og:image:height": "630",
+				"og:image:alt": "Tomas Arcostanzo's logo",
+				"twitter:image:alt": "Tomas Arcostanzo's logo",
+			}}
+
 		/>
 
 
