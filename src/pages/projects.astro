@@ -26,34 +26,34 @@ const page: PageType = "projects";
             {
                 deploy: "https://donde-suena.vercel.app/",
                 description: "Se desarrolló una aplicación web que permite a los usuarios buscar y compartir eventos musicales en cualquier parte del mundo.",
-                github: "https://github.com/tomychi/DondeSuena-backend",
+                github: "https://github.com/Auriarte20/DondeSuena",
                 img: "/tomas-arcostanzo/assets/dondesuena.png",
                 tags: ["React", "PostgreSQL", "TailwindCSS", "Redux", "Mercado pago", "Express", "Sequelize","Google Maps API"],
-                title: "Dondesuena",
+                title: "¿Dónde Suena?",
             },
             {
                 deploy: "https://google.com",
                 description: "Se desarrolló una aplicación web que permite a los usuarios agendar notas, tareas y eventos que se mostrarán en un calendario.",
-                github: "https://github.com/tomychi/calendar-back",
+                github: "https://github.com/tomychi/calendar-app",
                 img: "/tomas-arcostanzo/assets/calendar-app.png",
                 tags: ["React", "Express", "CSS", "Mongoose", "MongoDB"],
                 title: "Calendar App",
             },
             {
-                deploy: "https://google.com",
-                description: "Se desarrolló una aplicación web que permite a los usuarios crear notas y tareas que se mostrarán en un tablero.",
-                github: "https://github.com/tomychi/journal-app",
-                img: "/tomas-arcostanzo/assets/journal-app.png",
-                tags: ["React", "Redux","Saas", "Firebase",],
-                title: "Journal App",
-            },
-            {
-                deploy: "https://google.com",
+                deploy: "https://react-mapp-tomas-arcostanzo.netlify.app/",
                 description: "Se desarrolló una aplicación web que permite a los usuarios buscar y encontrar la mejor ruta para llegar a un lugar de interés.",
                 github: "https://github.com/tomychi/map-app",
                 img: "/tomas-arcostanzo/assets/map-app.png",
                 tags: ["Map Box", "React", "Typescript"],
                 title: "Map App",
+            },
+            {
+                deploy: "https://tomychi.github.io/journal-app/",
+                description: "Se desarrolló una aplicación web que permite a los usuarios crear notas y tareas que se mostrarán en un tablero.",
+                github: "https://github.com/tomychi/journal-app",
+                img: "/tomas-arcostanzo/assets/journal-app.png",
+                tags: ["React", "Redux","Saas", "Firebase",],
+                title: "Journal App",
             },
             {
                 deploy: "https://google.com",
@@ -65,20 +65,34 @@ const page: PageType = "projects";
             },
         ];  
 
-        projects.forEach((p) => {
+        projects.map((p) => {
             template += `
-        <div class="max-w-sm border border-gray-200 relative rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 mx-5 bg-gradient-to-br from-gray-100 to-gray-200 hover:from-gray-200 hover:to-gray-300">
-                <div class="xl:hover:scale-[1.45] xl:hover:transition-all xl:hover:duration-500 xl:hover:z-[100]">
+        <div class="
+                max-w-sm 
+                border 
+                border-gray-200 
+                relative 
+                rounded-lg 
+                shadow-md 
+                dark:bg-gray-800 dark:border-gray-700 
+                mx-5 
+                bg-gradient-to-br from-gray-100 to-gray-200 
+                hover:from-gray-200 hover:to-gray-300
+                shadow-[0px_16px_54px_7px_#b83280]
+                border-none
+                "
+        >
+                
                 <a href="${p.deploy}" target="_blank" rel="noopener noreferrer">
-                    <img  src=${p.img} alt=${p.title} class="rounded-t-lg w-full object-content" /> 
+                    <img  src=${p.img} alt=${p.title} class="rounded-t-lg w-full object-content bg-blend-soft-light bg-slate-80 xl:hover:scale-[1.45] xl:hover:transition-all xl:hover:duration-500 xl:hover:z-[100]" /> 
                 </a>
-                </div>
+                
             <div class="p-5 flex flex-col justify-center ">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">${p.title}
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-pink-500	 dark:text-white">${p.title}
                 </h5>
                     <div>
                         ${p.tags.map((tag) => `<span 
-                            class='cursor-pointer inline-block text-white rounded-full px-3 py-1 text-xs font-semibold mr-2 bg-fuchsia-500 hover:bg-fuchsia-600 mb-2'>
+                            class='cursor-pointer inline-block text-white rounded-full px-3 py-1 text-xs font-semibold mr-2 bg-gray-500 hover:bg-pink-500 mb-2'>
                             ${tag}
                             </span>`).join("")}		
                     </div>
@@ -107,12 +121,11 @@ const page: PageType = "projects";
     </script>
     
     <style>
-    
-
     .shadow-underline {
 		color: #fff;
 		animation: .3s 1s text-shadow-reveal forwards;
 	}
+
 
     @keyframes text-shadow-reveal {
         from {
