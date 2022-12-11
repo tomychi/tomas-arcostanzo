@@ -4,7 +4,7 @@ import NavHeader from '../components/NavHeader.astro';
 // @ts-ignore
 import { SEO } from "astro-seo";
 
-export type PageType = "home" | "about" | "contact" | "projects" | "404" | "google"
+export type PageType = "home" | "about" | "contact" | "projects" | "404"
 export interface Props {
 	title: string;
 	hasOverflow?: boolean;
@@ -29,6 +29,7 @@ const overflowType = !hasOverflow
 			nofollow={false}
 
 		/>
+		<meta name="google-site-verification" content="YyDuLCAI0YLf-TONC_fLiMdzYpVfodbo1ZCn5YPEN2w" />
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/tomas-arcostanzo/assets/logo.svg" />
